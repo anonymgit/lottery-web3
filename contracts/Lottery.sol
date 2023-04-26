@@ -11,12 +11,7 @@ pragma solidity ^0.8.18;
  import "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol";
  import "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol";
  import "@chainlink/contracts/src/v0.8/interfaces/KeeperCompatibleInterface.sol";
-// import "@chainlink/contracts/src/v0.8/interfaces/AutomationCompatibleInterface.sol";
 
-import "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol";
-import "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol";
-import "@chainlink/contracts/src/v0.8/interfaces/AutomationCompatibleInterface.sol";
-import "hardhat/console.sol";
 //errors
 error Lottery_NotEnoughEth();
 error Lottery_transactionFailed();
@@ -30,7 +25,7 @@ error Lottery_upkeepNotNeeded(uint256 currentBalance,uint256 numPlayers,uint Lot
  * @dev This implements ChainLink VRF v2 and chainlink keepers
  */
 
-contract Lottery is VRFConsumerBaseV2{
+contract Lottery is VRFConsumerBaseV2, KeeperCompatibleInterface{
 
     //type declarations
 
@@ -165,7 +160,7 @@ contract Lottery is VRFConsumerBaseV2{
         return s_LotteryState;
     }
 
-    function getNumWords() public view returns (uint256){
+    function getNumWords() public pure returns (uint256){
         return numWords;
     }
 
