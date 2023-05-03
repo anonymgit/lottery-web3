@@ -164,4 +164,16 @@ contract Lottery is VRFConsumerBaseV2, KeeperCompatibleInterface{
         return numWords;
     }
 
+    function getNumberOfPlayers() public view returns(uint256){
+        return players.length;
+    }
+
+    function getLatestTimeStamp() public view returns (uint256){
+        return s_lastTimeStamp;
+    }
+
+    function getRequestConfirmations() public pure returns(uint256){
+        return requestConfirmations;
+    }
+    
 }
