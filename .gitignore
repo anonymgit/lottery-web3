@@ -23,6 +23,9 @@ typechain
 # Files for the ART/Dalvik VM
 *.dex
 
+# dotenv file
+.env
+
 # Java class files
 *.class
 
